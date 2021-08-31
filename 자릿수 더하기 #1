@@ -1,0 +1,15 @@
+#include <iostream>
+
+using namespace std;
+int solution(int n)
+{
+    int answer = 0;
+    int a= n;
+    int b;
+    while(a !=0){
+        b = a%10;
+        a = a/10;
+        answer += b;
+    }
+    return answer;
+}
