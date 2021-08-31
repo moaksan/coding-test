@@ -1,0 +1,23 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector<int> solution(vector<int> arr) {
+    vector<int> answer;
+    int s = arr.size();     
+    int m = arr[0];         // min 값 저장
+    int n = 0;              // min 값을 가지는 번호 저장
+    if(s ==1)
+        answer.push_back(-1);
+    else{
+        for(int i=1; i<s;i++){
+            m = min(arr[i], m);
+            if(arr[i]==m)
+                n= i;
+        }
+        arr.erase(arr.begin() +n);
+        answer = arr;
+    }
+    return answer;
+}
