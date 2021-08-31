@@ -1,0 +1,22 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector<int> solution(int n, int m) {
+    vector<int> answer;
+    int gcd;
+	int lcm;
+    int a = n;
+    int b = m;
+    while(b!=0){
+        gcd = a%b;
+        a=b;
+        b = gcd;
+    }
+    gcd =a;
+    lcm = n*m / gcd;
+    answer.push_back(gcd);
+    answer.push_back(lcm);
+    return answer;
+}
