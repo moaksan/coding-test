@@ -1,0 +1,16 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+string solution(vector<string> seoul) {
+    string answer = "";
+    string a="김서방은 ";
+    string b= "에 있다";
+    string c= "";
+    for(int i=0; i<seoul.size(); i++)
+        if(seoul[i] =="Kim")
+            c = to_string(i);
+    answer = a+c+b;
+    return answer;
+}
