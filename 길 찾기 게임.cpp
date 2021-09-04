@@ -9,7 +9,7 @@ public:
     node* right;
 };
 
-void preorder(node* ptr, vector<int> v){
+void preorder(node* ptr, vector<int>& v){
     if(ptr){
         v.push_back(ptr->num);
         preorder(ptr->left, v);
@@ -17,7 +17,7 @@ void preorder(node* ptr, vector<int> v){
     }
 }
 
-void postorder(node* ptr, vector<int> v){
+void postorder(node* ptr, vector<int>& v){
     if(ptr){
         preorder(ptr->left, v);
         preorder(ptr->right, v);
@@ -65,7 +65,12 @@ vector<vector<int>> solution(vector<vector<int>> nodeinfo) {
         }
     }
     
+    vector<int> a, b;
+    preorder(&n[0], a);
+    postorder(&n[0], b);
     
+    answer.push_back(a);
+    answer.push_back(b);
     
     return answer;
 }
