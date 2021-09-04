@@ -17,6 +17,14 @@ void preorder(node* ptr, vector<int> v){
     }
 }
 
+void postorder(node* ptr, vector<int> v){
+    if(ptr){
+        preorder(ptr->left, v);
+        preorder(ptr->right, v);
+        v.push_back(ptr->num);
+    }
+}
+
 bool cmp(node a, node b){
     return a.y>b.y;
 }
