@@ -43,8 +43,8 @@ vector<vector<int>> solution(vector<vector<int>> nodeinfo) {
     
     sort(n, n+nodeinfo.size(), cmp);
     
-    node* ptr=&n[0];
     for(int i=1;i<nodeinfo.size();i++){
+        node* ptr=&n[0];
         while(true){
             if(n[i].x<ptr->x){
                 if(ptr->left==NULL){
