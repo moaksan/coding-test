@@ -4,35 +4,36 @@ using namespace std;
 
 class node{
 public:
-    int x,y;
+    int num,x,y;
     node* left;
     node* right;
 };
 
-void preorder(node* ptr, vector<int>){
+void preorder(node* ptr, vector<int> v){
     if(ptr){
-        preorder(ptr->left);
-        preorder(ptr->right);
-        
+        v.push_back(ptr->num);
+        preorder(ptr->left, v);
+        preorder(ptr->right, v);
     }
 }
 
-bool cmp(vector<int> a, vector<int>b){
-    return a[1]>b[1];
+bool cmp(node a, node b){
+    return a.y>b.y;
 }
 
 vector<vector<int>> solution(vector<vector<int>> nodeinfo) {
     vector<vector<int>> answer;
     node n[nodeinfo.size()];
     
-    sort(nodeinfo.begin(), nodeinfo.end(), cmp);
-    
     for(int i=0;i<nodeinfo.size();i++){
+        n[i].num=i+1;
         n[i].x=nodeinfo[i][0];
         n[i].y=nodeinfo[i][1];
         n[i].left=NULL;
         n[i].right=NULL;
     }
+    
+    sort(n, n+nodeinfo.size(), cmp);
     
     node* ptr=&n[0];
     for(int i=1;i<nodeinfo.size();i++){
