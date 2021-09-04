@@ -19,8 +19,8 @@ void preorder(node* ptr, vector<int>& v){
 
 void postorder(node* ptr, vector<int>& v){
     if(ptr){
-        preorder(ptr->left, v);
-        preorder(ptr->right, v);
+        postorder(ptr->left, v);
+        postorder(ptr->right, v);
         v.push_back(ptr->num);
     }
 }
