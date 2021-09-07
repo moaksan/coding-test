@@ -2,9 +2,9 @@
 
 using namespace std;
 
-bool check(vector<vector<vector<int>>>& bp){
-    for(int x=0;x<bp.size();x++){
-        for(int y=0;y<bp.size();y++){
+bool check(vector<vector<vector<int>>>& bp, int i, int j){
+    for(int x=max(i-1, 0);x<=i+1;x++){
+        for(int y=max(j-1, 0);y<=j+1;y++){
             if(bp[x][y][0]==1){
                 if(!(y==0 || bp[x][y][1] || (bp[x-1][y][1] && x-1>=0) || (bp[x][y-1][0] && y-1>=0))){
                     return false;
@@ -22,7 +22,7 @@ bool check(vector<vector<vector<int>>>& bp){
 
 vector<vector<int>> solution(int n, vector<vector<int>> build_frame){
     vector<vector<int>> answer;
-    vector<vector<vector<int>>> bp(n+1, vector<vector<int>>(n+1, vector<int>(2,0)));
+    vector<vector<vector<int>>> bp(n+2, vector<vector<int>>(n+2, vector<int>(2,0)));
     
     for(int i=0;i<build_frame.size();i++){
         int x=build_frame[i][0];
@@ -31,12 +31,12 @@ vector<vector<int>> solution(int n, vector<vector<int>> build_frame){
         
         if(build_frame[i][3]==1){
             bp[x][y][cate]=1;
-            if(!check(bp))
+            if(!check(bp, x, y))
                 bp[x][y][cate]=0;
         }
         if(build_frame[i][3]==0){
             bp[x][y][cate]=0;
-            if(!check(bp))
+            if(!check(bp, x, y))
                 bp[x][y][cate]=1;
         }
     }
